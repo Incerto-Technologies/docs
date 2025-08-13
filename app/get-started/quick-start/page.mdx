@@ -3,39 +3,37 @@ Get started with Incerto in 5 minutes.
 
 ## Introduction
 
-Incerto is your AI-native database copilot that helps you ...
+Incerto is your AI-native database copilot that understands your database and helps you do database specific tasks faster using natural language, with the help of multiple AI agents.
 
 ## Quick Start Guide
 
 ### Step 1 : Download and Install
 
-1. Go to [incerto.in](https://incerto.in) and click the "Download" button. The supported OS are:
+1. Go to [incerto.in](https://incerto.in) and click the **Download** button. The supported OS are:
    - **Windows:** `.exe` installer
    - **macOS (Apple Silicon):** `.dmg` file
-2. Run the installer and follow the on-screen instructions.  
-3. Launch Incerto after installation.
+2. Run the installer and follow the on-screen instructions.
+3. Incerto requires Docker to be up and running. Please follow [docker.com](https://www.docker.com/get-started/) to install Docker.
+4. Launch Incerto after installation.
 
-### Step 2 : Adding Your Database
+### Step 2 : Add Your Database
 
-1. Open Incerto and navigate to **Connections**.
-2. Click **Add Database** and fill in:
-   - **Database Type:** e.g., PostgreSQL, MySQL, ClickHouse
-   - **Host / Port**
-   - **Username & Password**
-3. Click **Test Connection** to ensure everything works, then **Save**.
+1. Open Incerto and navigate to **Add a Connection**.
+2. Fill in the details below:
+   - `Name`: A custom label for this connection (for easy identification later).
+   - `Host`: The database server address - can be an IP or a domain name.
+   - `Port`: The port your database service is listening on (e.g., 5432 for PostgreSQL, 3306 for MySQL).
+   - `User`: The username used to connect to the database.
+   - `Password`: The password for the above user.
+3. Click **Test and Save** to ensure everything works and save it.
 
-### Step 3 : Task to SQL
+### Step 3 : Talk to the Agents
 
-1. In the Incerto interface, go to the **AI Task** panel.
-2. Type a natural language request like:
-   > “Find the slowest queries in the last 24 hours”
+1. In the Incerto interface, go to the **Ask AI Anything** panel on the right side.
+2. Type a natural language request. Something like:
+   - *List the top 10 queries by execution time*
+   - *Show me the total sales by month for the last year*  
+   - *Find all users who signed up in the past 7 days*
 3. Incerto automatically generates and runs the SQL, showing you the results.
 
-### Step 4 : See Current Firing Problems
-
-1. Navigate to the **Issues** dashboard.
-2. View real-time **firing alerts** such as:
-   - High CPU usage
-   - Query timeouts
-   - Lock contention
-3. Click any issue for **AI-recommended remediation steps**.
+Learn what you can do on the Features page.

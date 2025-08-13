@@ -7,9 +7,9 @@ export const metadata = {
   title: "Incerto",
 };
 
-const banner = (
-  <Banner storageKey="some-key">My Project 1.0.0 is released 🎉</Banner>
-);
+// const banner = (
+//   <Banner storageKey="some-key">New Version is released !!!</Banner>
+// );
 const navbar = (
   <Navbar
     logo={<b> Incerto </b>}
@@ -22,7 +22,7 @@ const footer = (
   <Footer> © {new Date().getFullYear()} Copyright Incerto Technologies Pvt Ltd. All rights reserved.</Footer>
 );
 
-const search = <Search placeholder="Search docs.."></Search>;
+const search = <Search placeholder="Search..."></Search>;
 
 export default async function RootLayout({
   children,
@@ -45,10 +45,10 @@ export default async function RootLayout({
       </Head>
       <body>
         <Layout
-          banner={banner}
+          // banner={banner}
           navbar={navbar}
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/bhavya-dang/my-project"
+          docsRepositoryBase="https://github.com/Incerto-Technologies/docs"
           footer={footer}
           search={search}
           editLink={null}

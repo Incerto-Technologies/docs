@@ -1,0 +1,53 @@
+# LLM Basics
+LLM fundamentals and their implications for end users of AI-Native Applications
+
+## Input and Output
+
+Large Language Models (LLMs) take data (e.g., text, image, audio, etc.) and output text (e.g., SQL queries, code, natural language).
+
+Above is the simplest description of what is happening, but there are details we are missing here:
+
+- How will we know when it outputs an SQL query, or blob of text in English vs code?
+- Can it output gibberish?
+- Can it just stop giving answers?
+- How will I execute the SQL query it gives?
+
+## Nothing is Certain
+Before we scare you about uncertainty with LLMs, consider this scenario: You ask your friend "What is up?", are you certain what they will answer?
+No, but you know what to expect, the kind of answers to expect.
+
+LLMs have been trained to be predictable in intent and serve some common use cases like coding, conversing with humans, helping out humans with good intent.
+
+But that being said, the fact is:
+
+> There is no guarantee of what an LLM will output. No matter what applications built on top claim, nothing is 100%
+
+## LLMs mimic Humans (Can we trust LLM?)
+
+LLMs have been trained on human-generated content, and they have been built to mimic the human brain in thinking.
+
+Don't worry, the best researchers don't understand how LLMs think, they can't even agree on whether it pretends to think or actually has intelligence. This is a rabbit hole, don't go into that.
+We should just interact with them and learn what to expect. 
+
+Most people reading this must already have a good idea of what to expect when conversing with ChatGPT. Remember, ChatGPT is an application built with a lot of features in the backend and not just a bare LLM. A lot of engineering has gone into making it remember your preferences and be useful in daily tasks.
+
+But would we want an LLM to suggest SQL queries on complex data (different tables, databases, DBMS)? Not really, unless there is a specially curated application for it (think Incerto).
+
+> To gain trust in an application (built on LLMs) you must use it on dummy data and then, decide for yourself
+
+
+## AI-Native Applications
+
+The word gets thrown around a lot, but it means the core features of products are dependent on LLMs (e.g ChatGPT, Claude, Perplexity). 
+As a user, we should have the skepticism of **uncertainty of LLMs** causing uncertainty in the end product -- which is always possible.
+
+AI-Native Applications always have these features:
+
+- They take dynamic input from user chat, system, database, etc.
+- They transform the input and route it to the LLM
+- They process the output of the LLM and depending on its intelligence take actions (show text, do SQL queries, ask clarifying questions, etc.)
+
+> Always be clear of what feature is LLM powered and never blindly trust.
+
+Incerto is also an AI-Native application made for interacting and managing Databases. Interact with it and see if you can trust it or not.
+

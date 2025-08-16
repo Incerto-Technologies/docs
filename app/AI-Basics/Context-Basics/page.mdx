@@ -1,0 +1,47 @@
+# Context Basics
+We will understand what things LLM already knows and what things we must provide to get our task done.
+
+
+## What is Context?
+
+> Context refers to the surrounding information and circumstances that give meaning to data, conversations, or tasks in AI systems.
+
+From the example in previous section (please go through it if you haven't), extra context is provided like : 
+
+1. The current DBMS type : Clickhouse
+2. Name of the DBMS : There can be multiple servers in Clickhouse, which one do we want to execute on ?
+3. Database (inside the DBMS) : For Postgres this is relevant as we have to mention which Databases to connect to, before querying
+4. Deployment Metadata : It is running in docker ? Cloud ? Systemd ? or something custom
+
+There are a lot more, but hopefully we have a good idea now.
+
+NOTE : Credentials are not provided to LLM, but they are routed through frontend (whatever you have configured at that moment as default) 
+
+
+## What does LLM know ?
+You can safely assume LLM has been trained on all publicly available data on Internet. But that doesn't mean it will remember everything, or that such knowledge will surface even.
+
+You can assume it has read and understood documentation on Clickhouse, as this name is unique. Whereas it can confuse "Apache Spark" with the English word "Spark" if you have just said "Tell me about Spark"
+How you frame it, and the complete context helps it catch onto the right topic. Given `system_prompt` already has mention of Databases, if you just say "Spark" it will likely assume Apache Spark.
+
+> LLM possibly knows all public internet data, but the right phrases and context are required to trigger that knowledge.
+
+Following are the things you can expect LLM already knows
+
+- Very good understanding of SQL 
+- Good understanding of surface level architecture of different DBMS, especially PostgreSQL, MySQL. We have seen it understands ClickHouse also fairly deeply
+- It can reason about what you table represents if column name and table names are appropriate -- which is generally true for production.
+
+
+What it will struggle with (without extra context): 
+
+- How efficient/inefficient a query is -- although it can analyze it with right tools
+- What your production bug is (Incerto provides lot of context to help with this)
+- Niche optimizations or when to apply which one. It might have some loose idea. 
+
+> LLM knowledge is a function of that knowledge's availability on reliable sources on internet (before the time of training of LLM)
+
+### LLM training date
+The public data is always expanding and it matters when the underlying LLM was trained. LLMs do not undergo continuous training for usability and consistency reasons. 
+
+Incerto (and other applications too) are always updated with latest offerings and set them as default so you are mostly sorted there. 

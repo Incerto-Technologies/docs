@@ -1,0 +1,139 @@
+import Image from "next/image"
+
+# Agents Basics
+Making LLMs capable of taking actions instead of just giving blob of text. We will understand how it is done in context of Databases Operations.
+
+## What are AI Agents?
+Again, many humans have died arguing what is a "real agent". As users of AI-Native Applications, we define Agent as something which gives us ability complete tasks end to end, intelligently.
+
+How will that happen ? How will that be reliable ? We will have to understand what exact input can be given to LLM's to undersatnd this fully.
+
+> LLM wrapped around to complete tasks end to end is an Agent.
+
+
+## How does LLM Look 
+To developer building on top of LLM's it looks like a function call. In databases terms procedure, which have differnt parameters, which affect the output.
+Therefore they don't know much about LLM that you don't, relax.
+
+Rest everything is abstracted out by the LLM providers like [Anthropic Message Example](https://docs.anthropic.com/en/api/messages-examples), [OpenAI message Example](https://platform.openai.com/docs/guides/text)
+
+Applications are just sending request to LLM's with input data and it gives back formated text (json) as output.
+
+Therefore, we don't know what is happening behind the scenes, providers might have a whole routing system, complex parallel execution etc. Main point is we don't have to worry.
+
+> Implementation of LLM and how they answer is tool complex, we can just treat it has black box and work with it's behaviour and limitations.
+
+## Limitations of LLMs
+There are certain limitation which will stay true for near future too (althouth things are changing fast, so always revisit)
+
+- LLM's can't do any action in your environment
+- LLM's by default don't have any memory like humans do, it will not remember details of you past conversation if application doesn't send the history.
+- LLM's it doesn't learn or ammend its thinking based on privous interactions.
+
+## Type of Input
+Type of input can be catagorized differently but there are three main types (loosely followed by all providers)
+
+### System Prompt 
+This is the general instruction of what you want to achieve, what persona you want to give LLM and what expertise you want to surface for LLMs.
+
+Saying "You are an expert DBA" or "Expert C++ programmer" can help you get better results in general.
+Relate it to how human brain retreivs its knowledge (and expertise), if you are in front of chess board you see it visually and relevant thoughts are likely to come. If you are in swimming pool you are not thiking about Databases. LLM's don't have these senses, input is all they get, system prompts help them surface core skills and knowledge.
+
+### Messages 
+These are the details or the context requried to do a taks, or reason. In databases context, it would be the content of table, or helth of your system, of conversation history.
+
+### Tools
+This is the part which allows the "actions" to surface. Applications have certain functions, whose description is given to LLM, descriving when and how to use this function. LLM will send back special request with parameters filled in if it wants to run that function. 
+Whether we run it or not, and what it actually does is entirely dependent on the application code.
+
+Taking example of incerto we support following functions to be "suggested" (we don't execute unless you say so) by LLM 
+
+- `Execute Readonly Queries (sql_query, descriptive-comment, dbms_name_to_execute_on)`
+- `Execute Write Queries (sql_query, descriptive-comment, dbms_name_to_execute_on)`
+- `Execute Terminal Command (command, descriptive-comment, read/write, dbms_name_to_execute_on)`
+
+And several other. The execute function are differnt for different DBMS.
+
+After the tool call is executed, application is supposed to send it's result back to LLM. 
+
+## Putting it Together
+Let's learn the whole flow using a real example. 
+
+- User types "Sumarize Databases I have" into an input box.
+
+<div className="my-4">
+  <Image
+    src="/ agent_iteration_1.png"
+    alt="Agent Iteration 1"
+    width={600}
+    height={400}
+    className="rounded-lg"
+  />
+</div>
+
+- Application sense `system_prompt` + "Sumarize Databases I have" to Anthropic's Sonnet 4 (a particular LLM Model)
+- Application receives blob of text, which is structureds as a text field, and one tool call request.
+- At this moment user is shown a tool box on the application, requestion permission to run the sql query mentioned DBMS with user configured credential.
+
+<div className="my-4">
+  <Image
+    src="/ agent_iteration_2.png"
+    alt="Agent Iteration 2"
+    width={600}
+    height={400}
+    className="rounded-lg"
+  />
+</div>
+
+- After user accepts the query is executed and  `system_prompt` + "Sumarize Databases I have" + `LLM response + tool call` + `result` is sent to LLM. Note that, complete history of interactions are send to LLM, is it doesn't remember anything.
+
+<div className="my-4">
+  <Image
+    src="/ agent_iteration_3.png"
+    alt="Agent Iteration 3"
+    width={600}
+    height={400}
+    className="rounded-lg"
+  />
+</div>
+
+- LLM send another tool call
+
+<div className="my-4">
+  <Image
+    src="/ agent_iteration_4.png"
+    alt="Agent Iteration 4"
+    width={600}
+    height={400}
+    className="rounded-lg"
+  />
+</div>
+
+- Again result is appended back and sent to LLM
+<div className="my-4">
+  <Image
+    src="/second_tool.png"
+    alt="Agent Iteration 5"
+    width={600}
+    height={400}
+    className="rounded-lg"
+  />
+</div>
+
+- LLM sends back the summary and interaction halts. 
+<div className="my-4">
+  <Image
+    src="/ agent_iteration_5.png"
+    alt="Agent Iteration 5"
+    width={600}
+    height={400}
+    className="rounded-lg"
+  />
+</div>
+
+-- 
+
+But how did LLM know which DBMS to execute on ? Which credential to use ? How did it knw it had to write query for Clickhouse in above example ? 
+We have skipped over a few details we will cover in next one
+
+

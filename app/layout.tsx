@@ -2,12 +2,12 @@ import { Footer, Layout, Navbar } from "nextra-theme-docs";
 import { Head, Search } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
-import "./globals.css"
+import "./globals.css";
+import Script from "next/script";
 
 export const metadata = {
   title: "Incerto",
 };
-
 
 // const banner = (
 //   <Banner storageKey="some-key">New Version is released !!!</Banner>
@@ -21,7 +21,11 @@ const navbar = (
   />
 );
 const footer = (
-  <Footer> © {new Date().getFullYear()} Copyright Incerto Technologies Pvt Ltd. All rights reserved.</Footer>
+  <Footer>
+    {" "}
+    © {new Date().getFullYear()} Copyright Incerto Technologies Pvt Ltd. All
+    rights reserved.
+  </Footer>
 );
 
 const search = <Search placeholder="Search..."></Search>;
@@ -43,6 +47,7 @@ export default async function RootLayout({
       <Head
       // ... Your additional head options
       >
+        <Script id="clarity-script" src="/js/clarity.js" />
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
       </Head>
       <body>

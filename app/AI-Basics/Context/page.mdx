@@ -1,0 +1,80 @@
+---
+title: Using Context in the App
+description: Learn how Incerto remembers your selections (host, credentials, theme) and how to control them in the UI.
+---
+
+# Using Context in the App
+
+Context is information you attach to your conversation so the assistant answers with the right environment, data, and priorities in mind. Add context from the @ menu or the Add Context button in the chat sidebar.
+
+![Context interface overview](/context/home.png)
+
+## Context types
+
+Below are all context types you can attach via the @ menu or the Add Context button in the chat sidebar. These map directly to the options shown in the context picker UI.
+
+### Host
+
+- **What it is**: The database host you want the app to use for actions and insights.
+- **What it does**: Anchors queries, operations, alerts, and DB element lookups to a specific environment.
+- **When to use**: Always set a host before asking questions about data, schema, or operations.
+
+![Host selection interface](/context/host.png)
+
+### Templates
+
+- **What it is**: Reusable snippets and guides added to the conversation for additional expertise or structure.
+- **What it does**: Supplies ready-made context like best practices, checklists, or analysis recipes the AI can use.
+- **When to use**: To quickly add known instructions or domain knowledge without retyping them.
+
+![Templates picker interface](/context/template.png)
+
+### System Prompts
+
+- **What it is**: Global guidance for the AI's behavior and priorities during this chat.
+- **What it does**: Influences tone, safety, depth, and the way answers are structured.
+- **When to use**: To steer the assistant toward specific objectives or styles (for example, performance tuning focus).
+
+![System prompts picker interface](/context/system-prompts.png)
+
+### ClickHouse DB Elements
+
+- **What it is**: Databases, tables, and columns sourced from ClickHouse on the selected host.
+- **What it does**: Attaches precise schema elements so answers can reference the right entities.
+- **When to use**: When asking about ClickHouse schemas, queries, or data issues.
+
+![ClickHouse DB elements interface](/context/clickhouse-db-elements.png)
+
+### Postgres DB Elements
+
+- **What it is**: Schemas, tables, and columns from PostgreSQL on the selected host (and database).
+- **What it does**: Gives the AI exact schema context to analyze Postgres-specific questions.
+- **When to use**: When troubleshooting or optimizing queries for Postgres.
+
+![Postgres DB elements interface](/context/clickhouse-db-elements.png)
+
+### MySQL DB Elements
+
+- **What it is**: Databases, tables, and columns from MySQL on the selected host.
+- **What it does**: Adds the exact MySQL objects you're discussing to eliminate ambiguity.
+- **When to use**: When exploring or debugging MySQL data models and queries.
+
+![MySQL DB elements interface](/context/clickhouse-db-elements.png)
+
+### Firing Problems
+
+- **What it is**: Active alerts and issues currently detected on the selected hosts.
+- **What it does**: Brings live problems into context so the AI can explain, triage, or suggest remediation.
+- **When to use**: During incident response or when reviewing ongoing production issues.
+
+![Firing problems interface](/context/firing-problems.png)
+
+### Operations
+
+- **What it is**: Live operations such as running processes, queries, merges, or mutations on the selected hosts.
+- **What it does**: Shares real-time workload details to analyze bottlenecks or anomalies.
+- **When to use**: To diagnose slowdowns or understand what's currently running.
+
+![Operations interface](/context/db-operations.png)
+
+---

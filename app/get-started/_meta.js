@@ -1,4 +1,4 @@
 export default {
   "quick-start": "Quick Start",
-  "features": "Features",
+  features: "Features",
 };

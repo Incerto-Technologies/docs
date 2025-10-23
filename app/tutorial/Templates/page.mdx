@@ -1,0 +1,102 @@
+---
+title: Working with Templates
+description: Learn about Templates, the different types available, how to create them, and how they enhance the context provided to the AI.
+---
+
+# Working with Templates
+
+Templates are reusable snippets and guides that you add to conversations to provide additional expertise, structure, or domain knowledge. They act as ready-made context that the AI can reference when answering your questions.
+
+## What are Templates?
+
+Templates are pre-written instructions, checklists, best practices, or analysis recipes that you attach to your conversation via the @ menu or the Add Context button. Instead of retyping the same guidance repeatedly, templates let you quickly inject known instructions or domain expertise into the conversation context.
+
+![Templates picker interface](/context/template.png)
+
+### How Templates Affect AI Context
+
+When you add a template to a conversation:
+
+1. **Enhanced Instructions**: The template's content is injected into the system prompt, giving the AI explicit guidance on how to approach your question.
+2. **Focused Responses**: The AI uses the template content to structure answers, ensure completeness, or maintain specific standards.
+3. **Consistency**: Templates ensure the AI maintains the same approach and quality across similar queries without you having to repeat yourself.
+4. **Domain Expertise**: Templates can encode best practices, security guidelines, performance considerations, or any specialized knowledge relevant to your use case.
+
+## Types of Templates
+
+Templates come in three main categories, it only changes when and how they are included.
+
+Note : Whenever templates are added, they are shown on top of the input box and you can hover over them to see their content
+
+### 1. Manual Templates
+
+**How to trigger**: Use the '@' in input box and choose the template or keep typing its heading to search for it (without any space after '@')
+
+**How to remove**: Click on the 'x' on tile which shows the heading the template (above the input box, if you can't find it its not applied) or remove the `@<heading>` text in input box
+
+**When to use**: For some task discription which isn't required always.
+
+**Example use case**: A database performance checklist that the AI should follow when analyzing slow queries.
+
+### 2. Auto Templates
+**How to trigger**: They are automatically applied all the chats (only for first message), accross all hosts.
+**How to remove**: Click on 'x' on the corresponding tile (on top of input box)
+**When to use**: If there is some knowledge which help in all cases.
+**Example use case**: Information about organisation, details about most used tables, some crucial things to always avoid and more.
+
+### 3. Host-Specific Templates
+
+**How to trigger**: When creating this template, you have to choose "Host Specific" option and then it will attached automatically whenever you select that host (even if multiple others are attached)
+**How to remove**: Click on the 'x' same as others.
+**When to use**: Details usefull whenever working with that host.
+**Example use case**:  Storing what to query which databases in clickhouse-1-server
+
+
+## Using Templates Effectively
+
+### Templates in Action: A Complete Journey
+
+Understanding templates is easier when you see them in action. Here's a step-by-step journey from discovering templates to creating and using them effectively.
+
+#### Step 1: Access Templates from Home
+
+From the main dashboard, click on the **Templates** tile to access the template management interface. Templates are a core feature alongside SQL Editor, Alerts, and other database tools.
+
+![Access templates from home dashboard](/tutorial/Templates/template_photo.png)
+
+#### Step 2: Manage Your Templates
+
+The Templates page displays all your templates in a searchable table. Each template shows its name, description, type (Manual, Auto, or Host-Specific), associated context, and available actions (view, edit, delete).
+
+![Templates management interface](/tutorial/Templates/template_photo_open.png)
+
+Key features:
+- **Search and filter** - Find templates quickly by name or type
+- **View all types** - See Manual, Auto, and Host-Specific templates at a glance
+- **Quick actions** - Edit, view, or delete templates directly from the list
+
+#### Step 3: Create a New Template
+
+Click the **+** button to create a new template. The creation form includes:
+- **Name** - A clear title for your template
+- **Description** (optional) - Brief explanation of the template's purpose
+- **Template Type** - Choose between Auto, Manual, or Host Specific
+- **Content** - The actual instructions or context that will be provided to the AI
+
+![Create template form](/tutorial/Templates/template_photo_create.png)
+
+The form shows helpful text explaining how each template type behaves: Auto templates are included automatically in the first message, Manual templates require explicit selection, and Host-Specific templates attach automatically when their associated host is in the chat context.
+
+#### Step 4: View All Your Templates
+
+Once created, all templates are visible in the main templates list. You can see the variety of templates you have—from host-specific database guides to manual checklists—all organized with their types clearly labeled.
+
+![Complete templates list view](/tutorial/Templates/template_photo_full.png)
+
+The expanded view shows:
+- **Template diversity** - Multiple templates for different purposes and hosts
+- **Type indicators** - Clear labels showing Manual, Host-Specific, or Auto types
+- **Context associations** - Which hosts or databases each template relates to
+- **Easy management** - Quick access to all template actions
+
+---

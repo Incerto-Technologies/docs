@@ -11,7 +11,7 @@
     "sitemap:test": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
-    "next": "15.2.1",
+    "next": "15.2.8",
     "nextra": "^4.2.16",
     "nextra-theme-docs": "^4.2.16",
     "react": "^19.0.0",
